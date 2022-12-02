@@ -1,0 +1,90 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-title>Herramientas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/layout"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col *ngFor="let herramientas of herramientasDelTaller; let indice = index" sizeXs="12" sizeSm="6" sizeMd="4"
+        sizeLg="3">
+
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="12">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Disponible</ion-card-title>
+                </ion-card-header>
+      
+                <ion-img alt="{{herramientas.nombre}}" [src]="herramientas.urlimagen"></ion-img>
+      
+                <!-- para todos se mostrará la informacion de cantidad y nombre de la herramienta -->
+                <ion-card-content *ngFor="let user of usuario">
+                  <ion-text color="dark">
+                    <h2>{{herramientas.nombre}}</h2>
+                    <h2>Cantidad: {{herramientas.cantidad}}</h2>
+                  </ion-text>
+
+                  <!-- para el admin -->
+                  <ion-row *ngIf="user.idRolUsuario == 2; else elseTemplate"  class="ion-justify-content">
+                    <ion-col size="3">
+                      <ion-button (click)="editarHerramienta(herramientas.idHerramienta)">
+                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                    <ion-col size="3">
+                      <ion-button (click)="eliminarHerramienta(herramientas.idHerramienta, indice)">
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+
+                  <!-- para el usuario promedio -->
+                  <ng-template #elseTemplate>
+  
+                    <ion-row>
+                      <ion-col size="12">
+                        <ion-button color="light" (click)="agregar(herramientas.nombre)" shape="round" fill="clear" expand="block">
+                          <ion-text color="dark">
+                            <h6>Agregar a pedidos</h6>
+                          </ion-text>
+                          <ion-icon color="dark" slot="start" name="add"></ion-icon>
+                        </ion-button>
+                      </ion-col>
+                      <ion-col size="12">
+                        <ion-button (click)="ver()" expand="block" fill="clear" shape="round">
+                          Click me
+                        </ion-button>
+                      </ion-col>
+                    </ion-row>
+                  
+                  </ng-template>
+
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        
+        
+        
+      </ion-col>
+      
+      
+    </ion-row>
+  </ion-grid>
+  
+  <!-- fab placed to the bottom end -->
+  <ion-content *ngFor="let user of usuario">
+    <ion-fab *ngIf="user.idRolUsuario == 2" (click)="agregarHerramienta(idTaller)" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="warning">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+  
+</ion-content>

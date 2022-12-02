@@ -1,0 +1,21 @@
+[
+  {
+    "idEdificio": 0,
+    "nombre": "H",
+    "taller": {
+      "nombre": "Impresión 3D"
+    }
+  },
+  {
+    "idEdificio": 1,
+    "nombre": "I",
+    "taller": {}
+  },
+  {
+    "idEdificio": 2,
+    "nombre": "E",
+    "taller": {
+      "nombre": "Impresión 3D"
+    }
+  }
+]

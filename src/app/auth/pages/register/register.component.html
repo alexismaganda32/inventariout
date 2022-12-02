@@ -1,0 +1,73 @@
+<ion-content>
+    <div class="wrapper">
+        <div class="body">
+            <img class="logo" src="/assets/img/usuario.png" alt="login">
+            <h1>Herramientas UT <br> Registrate Ya!</h1>
+            <!-- Formulario -->
+            <form (ngSubmit)="registrar()" [formGroup]="registerUser">
+    
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" formControlName="name" placeholder="name">
+                    <label style="color: black;">Nombre Completo</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" formControlName="lastName" placeholder="lastname">
+                    <label style="color: black;">Apellidos</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" formControlName="matricula" placeholder="matricula">
+                    <label style="color: black;">Matrícula</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" formControlName="email"
+                        placeholder="matricula@utcancun.edu.mx">
+                    <label style="color: black;">Correo Electronico</label>
+    
+                    <span *ngIf="registerUser.get('email')?.hasError('required') && registerUser.get('email')?.touched"
+                        class="text-danger errorLabel">
+                        El <strong>correo</strong> es requerido
+                    </span>
+                    <span *ngIf="registerUser.get('email')?.hasError('email') && registerUser.get('email')?.touched"
+                        class="text-danger errorLabel">
+                        El <strong>correo</strong> es invalido
+                    </span>
+    
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                    <label style="color: black;">Password</label>
+                    <span
+                        *ngIf="registerUser.get('password')?.hasError('required') && registerUser.get('password')?.touched"
+                        class="text-danger errorLabel">
+                        La <strong>Contaseña</strong> es requerida
+                    </span>
+                    <span
+                        *ngIf="registerUser.get('password')?.hasError('minlength') && registerUser.get('password')?.touched"
+                        class="text-danger errorLabel">
+                        La <strong>Contaseña</strong> debe tener 6 caracteres
+                    </span>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" formControlName="repetirpassword"
+                        placeholder="Repetir Password">
+                    <label style="color: black;">Repetir Password</label>
+                </div>
+    
+                <!-- Botton -->
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary btn-lg" [disabled]="registerUser.invalid"
+                        type="submit">Registrar</button>
+                </div>
+                <ion-button [ngStyle]="{'text-transform': 'lowercase'}" (click)="goLogin()" expand="block">
+                    Ya tienes cuenta? Logueate 😎
+                </ion-button>
+            </form>
+        </div>
+    
+    </div>
+</ion-content>

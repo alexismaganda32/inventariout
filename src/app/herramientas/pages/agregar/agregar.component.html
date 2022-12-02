@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/herramientas/listado"></ion-back-button>
+        </ion-buttons>
+        <ion-title *ngIf="!editable">Agregar Herramienta</ion-title>
+        <ion-title *ngIf="editable">Editar Herramienta</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col push-sm="2"></ion-col>
+
+            <ion-col size-xs="12" size-sm="8">
+
+                <ion-list>
+                    <ion-item>
+                        <ion-label position="floating">Nombre</ion-label>
+                        <ion-input [(ngModel)]="herramienta.nombre" placeholder="Ingrega un nombre para la herramienta">
+                        </ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Cantidad</ion-label>
+                        <ion-input [(ngModel)]="herramienta.cantidad"
+                            placeholder="Ingresa la cantidad de estas herramientas">
+                        </ion-input>
+                    </ion-item>
+
+                    <!-- campo imput para subir imagen -->
+                    <ion-input class="input-img" type="file" accept=".png, .jpg, .jpeg" (change)="chargeImage($event)">
+                    </ion-input>
+
+                    <div class="img" *ngIf="preview">
+                        <img [src]="preview" alt="" width="440px" height="330px">
+                    </div>
+
+                    <ion-item>
+                        <ion-select [(ngModel)]="herramienta.idMarca" interface="popover"
+                            placeholder="Selecciona una marca para la herramienta">
+                            <ion-select-option *ngFor="let brand of brands" [value]="brand.idMarca">
+                                {{brand.nombre}}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <!-- Botones de agregar o editar dependiendo de si se edita o agrega una herramienta -->
+                    <ion-row>
+                        <ion-col push="2"></ion-col>
+                        <ion-col *ngIf="editable == false" size="4">
+                            <ion-button color="primary" (click)="addTool(herramienta)" expand="block"
+                                fill="outline" shape="round">
+                                Agregar
+                            </ion-button>
+                        </ion-col>
+
+                        <ion-col *ngIf="editable == true" size="4">
+                            <ion-button color="warning" (click)="ediTool(herramienta.idHerramienta, herramienta)"
+                                expand="block" fill="outline" shape="round">
+                                Editar
+                            </ion-button>
+                        </ion-col>
+                        <ion-col push="2"></ion-col>
+                    </ion-row>
+
+                </ion-list>
+
+            </ion-col>
+
+            <ion-col push-sm="2"></ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

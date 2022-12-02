@@ -1,0 +1,86 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.primary {
+    --color: white !important;
+    --background: var(--ion-color-primary) !important;
+    --border-radius: 8px !important;
+}
+
+.secondary {
+    --color: black !important;
+    text-align: center;
+    --background: var(--ion-color-secondary) !important;
+    --border-radius: 8px !important;
+}
+
+.tertiary {
+    --color: white !important;
+    --background: var(--ion-color-tertiary) !important;
+    --border-radius: 8px !important;
+}
+
+.success {
+    --color: white !important;
+    --background: var(--ion-color-success) !important;
+    --border-radius: 8px !important;
+}
+
+.warning {
+    --color: white !important;
+    --background: var(--ion-color-warning) !important;
+    --border-radius: 8px !important;
+}
+
+.danger {
+    --color: white !important;
+    --background: var(--ion-color-danger) !important;
+    --border-radius: 8px !important;
+}
+
+.dark {
+    --color: black !important;
+    --background: var(--ion-color-dark) !important;
+    --border-radius: 8px !important;
+}
+
+.medium {
+    --color: white !important;
+    --background: var(--ion-color-medium) !important;
+    --border-radius: 8px !important;
+}
+
+.light {
+    --color: white !important;
+    --background: var(--ion-color-light) !important;
+    --border-radius: 8px !important;
+}
+html{
+  font-family: 'Montserrat', sans-serif;
+
+}
+

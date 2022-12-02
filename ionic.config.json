@@ -1,0 +1,7 @@
+{
+  "name": "inventarioUTIONIC",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

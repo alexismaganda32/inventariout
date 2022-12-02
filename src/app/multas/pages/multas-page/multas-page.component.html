@@ -1,0 +1,66 @@
+<!-- <div>
+  <ng-container *ngIf="multas">
+    <ng-container *ngIf="multas.length === 0; else showMultas">
+      <p>NO TIENES MULTAS</p>
+    </ng-container>
+    <ng-template #showMultas>
+      <ion-list>
+        <ion-item *ngFor="let multa of multas">
+          <ion-label> multas{{ multa.nombre }}</ion-label>
+          <a [routerLink]="['./detalle/', multa.id]">ver</a>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </ng-container>
+  <a routerLink="multa-detalle-page">ver</a>
+</div> -->
+
+<ng-container *ngIf="multas">
+  <ng-container *ngIf="multas.length === 0; else showMultas">
+    <p>NO TIENES MULTAS</p>
+  </ng-container>
+  <ng-template #showMultas>
+    <ion-content class="ion-padding">
+      <ion-card *ngFor="let multa of multas" [routerLink]="['detalle']">
+        <div class="eBox">
+          <h2 class="edificio">{{ multa.edificio }}</h2>
+        </div>
+        <div class="cBox">
+          <ion-card-header>
+            <ion-card-title>
+              <strong class="espacio">Taller:</strong
+              >{{ multa.nombreTaller }}</ion-card-title
+            >
+            <ion-card-subtitle>
+              <strong class="espacio">Fecha:</strong
+              >{{ multa.fecha }}</ion-card-subtitle
+            >
+          </ion-card-header>
+        </div>
+      </ion-card>
+
+      <!-- <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="cancel()">Cancel</ion-button>
+              </ion-buttons>
+
+              <ion-buttons slot="end">
+                <ion-button (click)="confirm()" [strong]="true"
+                  >Confirm</ion-button
+                >
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-item>
+              <app-multa-detalle-page></app-multa-detalle-page>
+            </ion-item>
+          </ion-content>
+        </ng-template>
+      </ion-modal> -->
+    </ion-content>
+  </ng-template>
+</ng-container>
